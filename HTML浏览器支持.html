@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>HTML5浏览器支持</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript">
+	document.createElement("myHero");//添加新元素
+</script>
+<style type="text/css">
+	myHero{
+		display: block;animation;
+		background-color: #ddd;
+		padding: 50px;
+		font-size: 30px;
+	}
+</style>
+<!--解决IE浏览器不支持问题-->
+<!--[if It IE 9]>
+	<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+ <![endif]-->
+</head>
+<body>
+    <myHero>添加新元素</myHero>
+</body>
+</html>
