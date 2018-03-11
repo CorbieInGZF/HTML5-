@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>html5_拖放</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<style type="text/css">
+    #div1,#div2{width:200px;height:200px;padding:10px;border:1px solid #aaaaaa;}
+	</style>
+	<script type="text/javascript">
+		function allowDrop(ev){//允许放置
+			ev.preventDefault();
+		}
+		function drag(ev){
+			ev.dataTransfer.setData("text",ev.target.id);//被拖数据是被拖元素的id.(drag1)
+		}
+		function drop(ev){
+			ev.preventDefault();//避免浏览器对数据的默认处理（drop事件默认行为是以连接形式打开的）
+			var data=ev.dataTransfer.getData("text");//获得被拖数据
+			ev.target.appendChild(document.getElementById(data));
+		}
+	</script>
+	<p>拖动图片到矩形框中：</p>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="drag1" src="不想努力了.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="180" height="180"><!--关键是设置draggable为true-->
+	                         <!--ondragstart属性调用函数drag(event),规定了被拖动的数据-->
+	                         <!--dataTransfer.setData()方法设置被拖动的数据的数据类型和值-->
+	                         <!--ondragover事件规定了在何处放置被拖动的数据,调用ongragover的event.preventDefault()方法-->
+	</div>
+	<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>
+</html>
