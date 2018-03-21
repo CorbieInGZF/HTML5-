@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>html5_表单元素</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <h1>HTML5新的表单元素：</h1>
+    <h4>1、datalist:</h4>
+    <form action="demo-form.php" method="get">
+    	<input list="browsers" name="browsers">
+    	<datalist id="browsers">
+    		<option value="Internet Explorer"></option>
+    		<option value="Firefox"></option>
+    		<option value="Chrome"></option>
+    		<option value="Opera"></option>
+    		<option value="Safari"></option>
+    	</datalist>
+    	<input type="submit">
+    </form>
+
+    <h4>2、keygen（已废弃）:</h4>
+    <p> keygen元素的作用是提供一种验证用户的可靠方法。
+
+keygen标签规定用于表单的密钥对生成器字段。
+
+当提交表单时，会生成两个键，一个是私钥，一个公钥。
+
+私钥（private key）存储于客户端，公钥（public key）则被发送到服务器。公钥可用于之后验证用户的客户端证书（client certificate）。</p>
+<form action="demo-form.php">
+	用户名：<input type="text" name="usr_name">
+	加密：<keygen name="security"></keygen>
+	<input type="submit">
+</form>
+
+     <h4>3、output:</h4>
+     <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+     	<input type="range" id="a" value="50">100+
+     	<input type="number" id="b" value="50">=
+     	<output name="x" for="a b"></output>
+     </form>
+</body>
+</html>

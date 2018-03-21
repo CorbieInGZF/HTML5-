@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>html5_Video</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <video width="320" height="240" controls>
+    	<source src="NBA2K Online篮球在线 0.97.84 2017_9_15 1_17_02.mp4" type="video/mp4">
+    </video>
+    <p>使用DOM进行控制：</p>
+    <div style="text-align: center">
+    	<button onclick="playPause()">播放/暂停</button>
+    	<button onclick="makeBig()">放大</button>
+    	<button onclick="makeSmall()">缩小</button>
+    	<button onclick="makeNormal()">普通</button>
+    	<br>
+    	<video id="video1" width="420">
+    		<source src="NBA2K Online篮球在线 0.97.84 2017_9_15 1_17_02.mp4" type="video/mp4">
+    		<source src="NBA2K Online篮球在线 0.97.84 2017_9_15 1_17_02.ogg" type="video/ogg">
+    			您的浏览器不支持HTML5 video标签。
+    	</video>
+    </div>
+    <script type="text/javascript">
+    	var myVideo=document.getElementById("video1");
+
+    	function playPause(){
+    		if(myVideo.paused)
+    			myVideo.play();
+    		else
+    			myVideo.pause();
+    	}
+    	function makeBig(){
+    		myVideo.width=560;
+    	}
+    	function makeSmall(){
+    		myVideo.width=320;
+    	}
+    	function makeNormal(){
+    		myVideo.width=420;
+    	}
+    </script>
+</body>
+</html>
