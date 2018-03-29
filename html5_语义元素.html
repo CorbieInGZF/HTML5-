@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>html5_语义元素</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <h1>一个语义元素能够清楚的描述其具体意义给浏览器和开发者。</h1>
+    <h3>无语义元素实例：&ltdiv&gt和&ltspan&gt,无需考虑内容。</h3>
+    <h3>语义元素实例：&ltform&gt,&lttable&gt和&ltimg&gt，清楚的定义了它的内容。</h3>
+
+    <h2>html5_新语义元素：</h2>
+    <img src="html5_新语义元素.PNG">
+
+    <h4>1、&ltsection&gt元素</h4>
+    <p>&ltsection&gt 标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部</p>
+    <section>
+    	<h1>WWF</h1>
+    	<p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.</p>
+    </section>
+
+    <section>
+    	<h1>WWF's Panda symbol</h1>
+    	<p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
+    </section>
+
+    <h4>2、&ltarticle&gt元素：</h4>
+    <p>&ltarticle&gt 标签定义独立的内容。.</p>
+    <article>
+    	<h1>Internet Explorer 9</h1>
+    	<p> Windows Internet Explorer 9(缩写为 IE9 )在2011年3月14日21:00 发布。</p>
+    </article>
+
+    <h4>3、&ltnav&gt元素：</h4>
+    <p>&ltnav&gt 标签定义导航链接的部分。&ltnav&gt 元素用于定义页面的导航链接部分区域，但是，不是所有的链接都需要包含在 &ltnav&gt 元素中!</p>
+    <nav>
+    	<a href="http://www.runoob.com/html/html-tutorial.html">html</a>
+    	<a href="http://www.runoob.com/css/css-tutorial.html">css</a>
+    	<a href="http://www.runoob.com/js/js-tutorial.html">javaScript</a>
+    	<a href="http://www.runoob.com/jquery/jquery-tutorial.html">jquery</a>
+    </nav>
+
+    <h4>4、&ltaside&gt元素：</h4>
+    <p>&ltaside&gt 标签定义页面主区域内容之外的内容（比如侧边栏）</p>
+    <p>My family and I visited The Epcot center this summer.</p>
+    <aside>
+    	<h4>Epcot Center</h4>
+    	<p>The Epcot Center is a theme park in Disney World, Florida.</p>
+    </aside>
+
+    <h4>5、&ltheader&gt元素：</h4>
+    <p>&ltheader&gt元素描述了文档的头部区域&ltheader&gt元素主要用于定义内容的介绍展示区域.在页面中你可以使用多个&ltheader&gt 元素.</p>
+    <article>
+    	<header>
+    		<h1>Internet Explorer 9</h1>
+    		<p><time pubdate datetime="2011-03-15"></time></p>
+    	</header>
+    	<p>Windows Internet Explorer 9 (缩写为IE9）是在2011年3月14日21：00发布的。</p>
+    </article>
+
+    <h4>6、&ltfooter&gt元素：</h4>
+    <p>&ltfooter&gt 元素描述了文档的底部区域.&ltfooter&gt 元素应该包含它的包含元素一个页脚通常包含文档的作者，著作权信息，链接的使用条款，联系信息等</p>
+    <footer>
+    	<p>Posted by: Hege Refsnes</p>
+    	<p><time pubdate datetime="2012-03-01"></time></p>
+    </footer>
+
+    <h4>7、&ltfigure&gt和&ltfigcaption&gt元素：</h4>
+    <p>&ltfigure&gt标签规定独立的流内容（图像、图表、照片、代码等等）。&ltfigure&gt元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。&ltfigcaption&gt 标签定义 &ltfigure&gt 元素的标题.&ltfigcaption&gt元素应该被置于 "figure" 元素的第一个或最后一个子元素的位置。</p>
+    <p>我是真的不想努力了</p>
+    <figure>
+    	<img src="不想努力了.jpg" alt="不想努力了" height="250" width="300">
+    	<figcaption>不想努力了，请给我介绍个富婆</figcaption>
+    </figure>
+    
+    <font size="5" color="red">语义元素的浏览器版本问题解决方法</font><br>
+    <img src="语义元素的浏览器版本问题解决方法.PNG" alt="">
+    <a href="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js">图中网址</a>
+</body>
+</html>
