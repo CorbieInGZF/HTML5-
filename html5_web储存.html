@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>html5_web储存</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <font size="6" color="red">比cookie更好的本地存储方式</font>
+    <pre>使用HTML5可以在本地存储用户的浏览数据。
+
+         早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速. 这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能.
+
+         数据以 键/值 对存在, web网页的数据只允许该网页访问使用。</pre>
+    <h2>localStorage和sessionStorage</h2>
+    <h3>客户端存储数据的两个对象为：</h3>
+    <ul style="list-style-type: disc">
+    	<li>localStorage - 没有时间限制的数据存储</li>
+    	<li>sessionStorage - 针对一个 session 的数据存储</li>
+    </ul>
+    <img src="Storage浏览器支持检验.PNG" alt="Storage浏览器支持检验" height="300" width="800">
+
+    <font size="5" color="blue">localStorage对象：</font>
+    <p>localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。</p>
+    <div id="result"></div>
+    <script type="text/javascript">
+    	if (typeof(Storage)!=="undefined") {
+    		localStorage.sitename="网站实际名";
+    		document.getElementById("result").innerHTML="网站名："+localStorage.sitename;
+    	}
+        else{
+            document.getElementById("result").innerHTML="对不起，您的浏览器不支持web存储";
+        }
+    </script>
+
+    <h3>不管是 localStorage，还是sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）：</h3>
+    <ul style="list-style-type: disc">
+        <li>保存数据：localStorage.setItem(key,value);</li>
+        <li>读取数据：localStorage.getItem(key);</li>
+        <li>删除单个数据：localStorage.removeItem(key);</li>
+        <li>删除所有数据：localStorage.clear();</li>
+        <li>得到某个索引的key：localStorage.key(index);</li>
+    </ul>
+
+    <font size="6" color="red">下面的实例展示了用户点击按钮的次数:</font>
+    <script type="text/javascript">
+        function clickCounter(){
+            if (typeof(Storage)!=="undefined") {
+                if (localStorage.clickcount) {
+                    localStorage.clickcount=Number(localStorage.clickcount)+1;
+                }
+                else{
+                    localStorage.clickcount=1;
+                }
+                document.getElementById("result1").innerHTML="你已经点击了按钮"+localStorage.clickcount+"次";
+            }
+            else{
+                document.getElementById("result1").innerHTML="对不起，您的浏览器不支持web存储";
+            }
+        }
+    </script>
+    <p>点击该按钮查看计数器的增加</p>
+    <p><button onclick="clickCounter()" type="button">点我！</button></p>
+    <div id="result1"></div>
+    <p>关闭浏览器再次启动，计数器将继续计数（不重置）</p>
+
+    <font size="5" color="blue">sessionStorage对象:</font>
+    <p>sessionStorage 方法针对一个 session进行数据存储。当用户关闭浏览器窗口后，数据会被删除。</p>
+
+    <font size="6" color="red">下面的实例展示了用户点击按钮的次数:</font>
+    <script type="text/javascript">
+        function clickCounter1(){
+            if (typeof(Storage)!=="undefined") {
+                if (sessionStorage.clickcount) {
+                    sessionStorage.clickcount=Number(sessionStorage.clickcount)+1;
+                }
+                else{
+                    sessionStorage.clickcount=1;
+                }
+                document.getElementById("result2").innerHTML="在这个会话中你已经点击了该按钮"+sessionStorage.clickcount+"次";
+            }
+            else{
+                document.getElementById("result2").innerHTML="抱歉，你的浏览器不支持web存储";
+            }
+        }
+    </script>
+    <p>点击该按钮查看计数器增加数</p>
+    <div id="result2"></div>
+    <p><button onclick="clickCounter1()" type="button">点我！</button></p>
+    <p>关闭浏览器再次启动，计数器将继续计数（不重置）</p>
+
+
+    <font size="6" color="green">web Storage开发一个简单的网站列表程序：</font>
+    <p>网站列表程序实现以下功能：</p>
+    <ul style="list-style-type: disc">
+        <li>可以输入网站名，网址，以网站名作为key存入localStorage；</li>
+        <li>根据网站名，查找网址；</li>
+        <li>列出当前已保存的所有网站；</li>
+    </ul>
+
+    <div style="border: 2px dashed #ccc;width:320px;text-align:center;">
+        <label for="keyname">别名(key):</label>  
+        <input type="text" id="keyname" name="keyname" class="text"/>  
+        <br/>  
+        <label for="sitename">网站名：</label>  
+        <input type="text" id="sitename" name="sitename" class="text"/>  
+        <br/>  
+        <label for="siteurl">网 址：</label>  
+        <input type="text" id="siteurl" name="siteurl"/>  
+        <br/>  
+        <input type="button" onclick="save()" value="新增记录"/>  
+        <hr/>  
+        <label for="search_phone">输入别名(key)：</label>  
+        <input type="text" id="search_site" name="search_site"/>  
+        <input type="button" onclick="find()" value="查找网站"/> 
+        <p id="find_result"><br/></p>  
+        <label for="2search_phone">输入要删除的网站名：</label>
+        <input type="text" id="delete_site" name="delete_site"/>
+        <input type="button" onclick="remove()" value="删除网站"/>
+        <p id="delete_result"><br/></p>
+    </div>  
+    <br>
+    <div id="list"></div>
+    <script>
+        //loadAll();//载入所有储存在localStorage的数据
+        //保存数据
+    function save(){  
+        var site = new Object;
+        site.keyname = document.getElementById("keyname").value;
+        site.sitename = document.getElementById("sitename").value;  
+        site.siteurl = document.getElementById("siteurl").value;
+        var str = JSON.stringify(site); // 将对象转换为字符串
+        localStorage.setItem(site.keyname,str);  
+        alert("保存成功");
+    }  
+
+        //查找数据
+    function find(){  
+        var search_site = document.getElementById("search_site").value;  
+        var str = localStorage.getItem(search_site);  
+        var find_result = document.getElementById("find_result");
+        var site = JSON.parse(str);  
+        find_result.innerHTML = search_site + "的网站名是：" + site.sitename + "，网址是：" + site.siteurl;  
+    }  
+    function remove(){
+        var delete_site=document.getElementById("delete_site").value;
+        var siteurl=localStorage.getItem(delete_site);
+        var delete_site=document.getElementById("delete_result");
+        delete_result.innerHTML=delete_site+"的网址是："+siteurl;
+        localStorage.removeItem(delete_site);
+    }
+        //将所有存储在localStorage中的对象提取出来，并展现在界面上
+        //确保存储的keyname对应的值转换为对象，否则JSON,parse会报错
+        function loadAll(){
+            var list=document.getElementById("list");
+            if (localStorage.length>0) {
+                var result3="<table border='1'>";
+                result3+="<tr><td>别名</td><td>网站名</td><td>网址</td></tr>";
+                for (var i = localStorage.length - 1; i >= 0; i--) {
+                     var keyname=localStorage.key(i);
+                     var str=localStorage.getItem(keyname);
+                     var site = JSON.parse(str);
+                     result3 +="<tr><td>"+site.keyname+"</td><td>"+site.sitename+"</td><td>"+site.siteurl+"</td></tr>";
+            }
+            result3 +="</table>";
+            list.innerHTML=result3;
+        }
+        else{
+             list.innerHTML="数据为空......";
+        }
+    }
+    </script>
+</body>
+</html>
