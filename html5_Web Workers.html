@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>html5_Web Workers</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <h1>web worker 是运行在后台的 JavaScript，不会影响页面的性能。</h1>
+    <p>当在 HTML 页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。</p>
+
+    <p>计数：<output id="result"></output></p>
+    <button onclick="startWorker()">开始工作</button>
+    <button onclick="stopWorker()">停止工作</button>
+
+    <script type="text/javascript">
+    	var w;
+    	function startWorker(){
+    		if (typeof(Worker)!== "undefined") {
+    			if (typeof(w)=="undefined") {
+    				w=new Worker("demo_Workers.js");
+    			}
+    			w.onmessage=function(event){
+    				document.getElementById("result").innerHTML=event.data;
+    			};//一个事件监听器
+    		}else{
+    			document.getElementById("result").innerHTML="抱歉，你的浏览器不支持Web Workers。";
+    		}
+    	}
+    	function stopWorker(){
+    		w.terminate();
+    		w=undefined;
+    	}
+    </script>
+</body>
+</html>

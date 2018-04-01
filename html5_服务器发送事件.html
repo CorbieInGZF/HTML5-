@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>html5_服务器发送事件</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <h1>HTML5 服务器发送事件（server-sent event）允许网页获得来自服务器的更新。</h1>
+
+    <h3>Server-Sent 事件 - 单向消息传递:</h3>
+    <p>Server-Sent 事件指的是网页自动获取来自服务器的更新。以前也可能做到这一点，前提是网页不得不询问是否有可用的更新。通过服务器发送事件，更新能够自动到达。例子：Facebook/Twitter 更新、估价更新、新的博文、赛事结果等。</p>
+
+    <font size="4" color="red">获取服务端更新数据</font>
+    <div id="result"></div>
+
+    <script>
+    	if (typeof(EventSource)!=="undefined") {
+    		var source=new EventSource("demo_sse.php");
+    		source.onmessage=function(event){
+    			document.getElementById("result").innerHTML+=event.data+"<br>";
+    		};
+    	}
+    	else{
+    		document.getElementById("result").innerHTML="抱歉，你的浏览器不支持server-sent事件。";
+    	}
+    </script>
+</body>
+</html>
